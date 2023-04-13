@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.mapass.databinding.ActivityUpdateBinding;
 
 public class UpdateActivity extends AppCompatActivity {
@@ -39,6 +41,7 @@ public class UpdateActivity extends AppCompatActivity {
 
                 Accounts accounts = new Accounts(id,name,email,pass);
                 myInt.update(accounts);
+                Toast.makeText(getApplicationContext(), "Account updated successfully", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -47,6 +50,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myInt.deleteAcc(id);
+                Toast.makeText(getApplicationContext(), "Account deleted successfully", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
