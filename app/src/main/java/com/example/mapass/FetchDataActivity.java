@@ -24,7 +24,7 @@ public class FetchDataActivity extends AppCompatActivity {
         myInt=myDb.myInterface();
 
         accountsList=myInt.getAllAccounts();
-        Toast.makeText(this,"You have added "+accountsList.size() + " accounts",Toast.LENGTH_SHORT ).show();
+        Toast.makeText(this,"You have "+accountsList.size() + " accounts",Toast.LENGTH_SHORT ).show();
         myAdapter=new MyAdapter(this,accountsList);
         binding.dataRecycler.setLayoutManager(new LinearLayoutManager(this));
         binding.dataRecycler.setAdapter(myAdapter);
