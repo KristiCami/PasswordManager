@@ -14,7 +14,7 @@
         android:textStyle="bold"
         android:textSize="30sp"
         android:textAlignment="center"
-        android:text="Update Account Info"
+        android:text="Edit Account Info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
@@ -43,14 +43,14 @@
         android:id="@+id/update_acc"
         android:layout_gravity="center_horizontal"
         android:text="Update Account"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
         android:layout_marginTop="20dp"
         android:id="@+id/del_acc"
         android:layout_gravity="center_horizontal"
         android:text="Delete Account"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

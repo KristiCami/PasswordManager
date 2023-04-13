@@ -43,12 +43,13 @@
             android:id="@+id/add_acc"
             android:layout_gravity="center_horizontal"
             android:text="Add Account"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
             android:text="Show Accounts"
             android:id="@+id/showAcc_btn"
             android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
