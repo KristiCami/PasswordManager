@@ -30,9 +30,14 @@ public class MainActivity extends AppCompatActivity {
                 String email = binding.mobileNumber.getText().toString();
                 String password = binding.password.getText().toString();
 
-                Accounts accounts = new Accounts(0,name,email,password);
-                myInt.insert(accounts);
-                Toast.makeText(getApplicationContext(), "Account added successfully", Toast.LENGTH_SHORT).show();
+                if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Name, email, and password are required", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Accounts accounts = new Accounts(0, name, email, password);
+                    myInt.insert(accounts);
+                    Toast.makeText(getApplicationContext(), "Account added successfully", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -39,10 +39,16 @@ public class UpdateActivity extends AppCompatActivity {
                 String email = binding.mobileNumber.getText().toString();
                 String pass = binding.password.getText().toString();
 
-                Accounts accounts = new Accounts(id,name,email,pass);
-                myInt.update(accounts);
-                Toast.makeText(getApplicationContext(), "Account updated successfully", Toast.LENGTH_SHORT).show();
-                finish();
+                if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Name, email, and password are required", Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                    Accounts accounts = new Accounts(id, name, email, pass);
+                    myInt.update(accounts);
+                    Toast.makeText(getApplicationContext(), "Account updated successfully", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
 
