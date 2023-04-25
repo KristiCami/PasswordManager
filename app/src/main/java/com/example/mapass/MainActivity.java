@@ -3,10 +3,18 @@ package com.example.mapass;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.mapass.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
@@ -14,11 +22,27 @@ public class MainActivity extends AppCompatActivity {
     MyDatabase myDb;
     MyInterface myInt;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_image);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+// Set the image resource for the ImageView in the dialog
+        ImageView dialogImage = dialog.findViewById(R.id.dialogImage);
+        dialogImage.setImageResource(R.drawable.applogo);
+
+// Set the welcome message below the image
+        TextView welcomeMessage = dialog.findViewById(R.id.welcomeMessage);
+        welcomeMessage.setText("Welcome to the Password Manager App");
+        dialog.show();
 
         myDb= Room.databaseBuilder(this,MyDatabase.class,"accounts").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         myInt=myDb.myInterface();
