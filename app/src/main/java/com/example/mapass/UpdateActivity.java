@@ -2,6 +2,8 @@ package com.example.mapass;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -57,8 +59,18 @@ public class UpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 myInt.deleteAcc(id);
                 Toast.makeText(getApplicationContext(), "Account deleted successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), FetchDataActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
+
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+
 }

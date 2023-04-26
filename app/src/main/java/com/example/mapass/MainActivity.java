@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-// Set the image resource for the ImageView in the dialog
+        // Set the image resource for the ImageView in the dialog
         ImageView dialogImage = dialog.findViewById(R.id.dialogImage);
         dialogImage.setImageResource(R.drawable.applogo);
 
-// Set the welcome message below the image
+        // Set the welcome message below the image
         TextView welcomeMessage = dialog.findViewById(R.id.welcomeMessage);
         welcomeMessage.setText("Welcome to the Password Manager App");
         dialog.show();
