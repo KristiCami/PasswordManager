@@ -31,14 +31,14 @@ public class UpdateActivity extends AppCompatActivity {
         int id = getIntent().getIntExtra("id",-1);
 
         binding.socialMediaName.setText(name);
-        binding.mobileNumber.setText(email);
+        binding.email.setText(email);
         binding.password.setText(password);
 
         binding.updateAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = binding.socialMediaName.getText().toString();
-                String email = binding.mobileNumber.getText().toString();
+                String email = binding.email.getText().toString();
                 String pass = binding.password.getText().toString();
 
                 if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {

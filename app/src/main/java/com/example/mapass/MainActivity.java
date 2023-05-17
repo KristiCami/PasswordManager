@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,11 +48,33 @@ public class MainActivity extends AppCompatActivity {
         myDb= Room.databaseBuilder(this,MyDatabase.class,"accounts").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         myInt=myDb.myInterface();
 
+        EditText objName = findViewById(R.id.socialMediaName);
+        EditText objEmail = findViewById(R.id.Email);
+        EditText objPassword = findViewById(R.id.password);
+
+        if (savedInstanceState != null) {
+            // Retrieve data from the Bundle (other methods include getInt(), getBoolean(), etc)
+            CharSequence userText = savedInstanceState.getCharSequence("savedUserText");
+            CharSequence displayText = savedInstanceState.getCharSequence("savedDisplayText");
+
+            // Restore the dynamic state of the UI
+            objName.setText(userText);
+            objEmail.setText(displayText);
+        } else {
+            // Initialize the UI
+            objName.setText("");
+            objName.setHint("Name");
+            objEmail.setText("");
+            objEmail.setHint("Email");
+            objPassword.setText("");
+            objPassword.setHint("Password");
+        }
+
         binding.addAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = binding.socialMediaName.getText().toString();
-                String email = binding.mobileNumber.getText().toString();
+                String email = binding.Email.getText().toString();
                 String password = binding.password.getText().toString();
 
                 if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
