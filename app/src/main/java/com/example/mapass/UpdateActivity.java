@@ -41,7 +41,7 @@ public class UpdateActivity extends AppCompatActivity {
                 String email = binding.email.getText().toString();
                 String pass = binding.password.getText().toString();
 
-                if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Name, email, and password are required", Toast.LENGTH_SHORT).show();
                 }
                 else {

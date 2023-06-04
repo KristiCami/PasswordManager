@@ -1,5 +1,6 @@
 package com.example.mapass;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
@@ -8,6 +9,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         binding.addAcc.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 String name = binding.socialMediaName.getText().toString();
@@ -79,11 +82,15 @@ public class MainActivity extends AppCompatActivity {
 
                 if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Name, email, and password are required", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Accounts accounts = new Accounts(0, name, email, password);
-                    myInt.insert(accounts);
-                    Toast.makeText(getApplicationContext(), "Account added successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    String encryptedPassword = EncryptionUtils.encrypt(password);
+                    if (encryptedPassword != null) {
+                        Accounts accounts = new Accounts(0, name, email, encryptedPassword);
+                        myInt.insert(accounts);
+                        Toast.makeText(getApplicationContext(), "Account added successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Error encrypting the password", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

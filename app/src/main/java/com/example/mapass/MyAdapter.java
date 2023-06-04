@@ -2,11 +2,13 @@ package com.example.mapass;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.password.setText(accounts.getPassword());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context,UpdateActivity.class);
@@ -41,7 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("id",accounts.getId());
 
                 intent.putExtra("email",accounts.getEmail());
-                intent.putExtra("name",accounts.getPassword());
+                intent.putExtra("password",EncryptionUtils.decrypt(accounts.getPassword()));
                 context.startActivity(intent);
             }
         });
