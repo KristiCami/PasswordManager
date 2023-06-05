@@ -27,13 +27,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return new MyViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Accounts accounts = accountsList.get(position);
         holder.name.setText(accounts.getsName());
         holder.email.setText(accounts.getEmail());
-        holder.password.setText(accounts.getPassword());
+        String decryptedPassword = EncryptionUtils.decrypt(accounts.getPassword());
+        holder.password.setText(decryptedPassword);
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)

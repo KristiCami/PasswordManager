@@ -88,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
                         Accounts accounts = new Accounts(0, name, email, encryptedPassword);
                         myInt.insert(accounts);
                         Toast.makeText(getApplicationContext(), "Account added successfully", Toast.LENGTH_SHORT).show();
+                        binding.socialMediaName.setText("");
+                        binding.Email.setText("");
+                        binding.password.setText("");
+
                     } else {
                         Toast.makeText(getApplicationContext(), "Error encrypting the password", Toast.LENGTH_SHORT).show();
                     }
